@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {getToken} from './user';
+
 const service=axios.create({
   baseURL:"http://baojia.chelun.com/",
   timeout:5000
