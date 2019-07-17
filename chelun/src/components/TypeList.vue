@@ -3,7 +3,7 @@
     <div class="Type-list" v-for="(item) in CarData" :key="item.GroupId">
         <div class="list-title">{{item.GroupName}}</div>
         <ul v-for="(item) in item.GroupList" :key="item.SerialID">
-            <li>
+            <li @click="carDetail(item.SerialID)">
                 <img :src="item.Picture">
                 <div>
                     <p>{{item.AliasName}}</p>
@@ -30,7 +30,10 @@ export default {
   methods: {
       ...mapActions({
           getCarList:"TypeList/getCarList"
-      })
+      }),
+      carDetail(SerialID){
+           this.$router.push({path:'/carDetail',query:{SerialID:SerialID}})
+      }
   },
   created() {
       this.getCarList()
