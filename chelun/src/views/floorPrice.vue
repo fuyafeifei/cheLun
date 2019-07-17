@@ -1,4 +1,5 @@
 <template>
+ <div>
     <div class="wrap">
         <p class="font">可向多个商家咨询最低价，商家及时回复@</p>
          <dl>
@@ -25,23 +26,35 @@
          <ul>
               <li>
                   <span>城市</span>
-                  <span class="act">北京 ></span>
+                  <span @click="citybtn" class="act">北京 ></span>
               </li>
           </ul>
          <div class="but">
               <button class="buttona">询问底价</button>
          </div>
+         <make-offers></make-offers>  
+    </div>
+          <city></city>
     </div>
 </template>
-<script>
+<script lang="ts">
+ import makeOffers from '@/components/makeOffers.vue'
+ import city from '@/components/city.vue'
 export default {
   props: {},
-  components: {},
+  components: {
+    makeOffers,// 挂载报价组件
+    city, // 城市组件
+  },
   data() {
     return {};
   },
   computed: {},
-  methods: {},
+  methods: {
+    citybtn(){
+        
+    }
+  },
   created() {},
   mounted() {}
 };
@@ -91,12 +104,12 @@ export default {
   .geren {
     width: 100%;
     height: 25px;
-    font-size: 15px;
-    background: rgb(223, 222, 222);
+    font-size: 14px;
+    background:rgba(0,0,0,.2);
     padding: 0 10px;
     display: flex;
     line-height: 25px;
-    color: rgb(146, 145, 145);
+    color:rgba(0,0,0,.5);
   }
   ul {
     background: #fff;
@@ -152,7 +165,7 @@ export default {
       background:rgb(70, 151, 218);
       border-radius: 5px;
       color:#fff;
-  }
+   }
   }
 
 }

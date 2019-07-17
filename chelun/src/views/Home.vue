@@ -1,51 +1,55 @@
 <template>
-  <div>
-       
-         <left-nav :getlistact="getlistact"></left-nav>
-        
-         <right-nav :getlistact="getlistact"></right-nav>
-        
-      
+  <div class="home">
+    <TypeList></TypeList>
+    <left-nav :getlistact="getlistact"></left-nav>
+    <right-nav :getlistact="getlistact"></right-nav>
   </div>
 </template>
+<script lang="ts">
+import leftNav from "@/components/leftNav.vue";
+import rightNav from "@/components/rightNav.vue";
+import { mapActions, mapState } from "vuex";
+import Vue from "vue";
+import TypeList from "../components/TypeList.vue";
 
-<script>
-
- import leftNav from '@/components/leftNav.vue'
- import rightNav from '@/components/rightNav.vue'
- import { mapActions, mapState } from 'vuex'
- import Vue from 'vue'
-export default  {
-  props:{
-
+export default Vue.extend({
+  name: "home",
+  props: {},
+  components: {
+    TypeList,
+    leftNav,
+    rightNav
   },
-  components:{
-     leftNav,
-     rightNav
-  },
-  data(){
+  data() {
     return {
-  
-    } 
+      flag: false
+    };
   },
-  computed:{
-      ...mapState({
-        getlistact: state => state.left.getlistact
-      })
+  computed: {
+    ...mapState({
+      getlistact: (state:any) => state.left.getlistact
+    })
   },
-  methods:{
-      ...mapActions({
-         getleft: 'left/getleftli'
-      })
+  methods: {
+    ...mapActions({
+      getleft: "left/getleftli",
+      getCarList:"TypeList/getCarList"
+    })
   },
-  created(){
- 
-  },
-  mounted(){
-       this.getleft()
+  created() {},
+  mounted() {
+    this.getleft();
+  }
+});
+</script>
+<style scoped lang="scss">
+.home {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  button {
+    width: 50px;
+    height: 50px;
   }
 }
-</script>
-<style lang="scss">
-     
 </style>
