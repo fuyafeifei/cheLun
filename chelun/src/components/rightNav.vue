@@ -19,18 +19,20 @@ export default {
   data() {
     return {
       current: "",
-      isTouch: false,
+      isTouch:false,
       sec: null,
-      arrList: []
+      arrList: [] = []
     };
   },
   computed: {},
   methods: {
     touchstart(e: Event): void {
       this.isTouch = true;
+      this.touchmove(e)
     //   this.sec.scrollToElement(this.arrList[], 200);
     },
     touchmove(e: Event): void {
+      
       let dataLength = this.$refs.spelling.children.length;
       let pageY = e.touches[0].pageY;
       let letterHeight = 0.4 * window.innerWidth / 750 * 100;
@@ -54,7 +56,7 @@ export default {
     }
   },
   created() {
-    this.$bus.$on("abscroll", res => {
+    this.$bus.$on("abscroll", (res:any) => {
       this.arrList = res.arrList.children;
       this.sec = res.sec;
     });
