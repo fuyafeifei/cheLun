@@ -42,7 +42,6 @@ const mutations = {
                 ];
             }
         }
-        console.log('tag...', obj)
         return state.getlistact = obj;
     }
 }

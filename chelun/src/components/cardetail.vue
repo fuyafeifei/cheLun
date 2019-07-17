@@ -1,13 +1,13 @@
 <template>
 <div>
-  <div class="context" v-for="(item) in datailList"  :key="item.car_id">
-    <p>1.4L/110kw</p>
-    <div class="context-list">
-      <div>2019款 35</div>
-      <span>150玛丽</span>
+  <div class="context" v-for="(item,index) in datailList" :key="item.car_id">
+    <p>{{index}}</p>
+    <div class="context-list" v-for="(val) in item" :key="val.car_id">
+      <div>{{val.market_attribute.year+"款"+ val.car_name}}</div>
+      <span>{{val.horse_power+"马力"+val.gear_num+"档"+val.trans_type}}</span>
       <p>
-        <span>指导价 23.90万</span>
-        <span>20.65万起</span>
+        <span>指导价 {{val.market_attribute.official_refer_price}}</span>
+        <span>{{val.market_attribute.dealer_price_min}}起</span>
       </p>
       <button>询问底价</button>
     </div>
@@ -54,6 +54,7 @@ export default Vue.extend({
   }
   .context-list {
     padding: 0.1rem 0.1rem 0;
+    margin-top: 0.1rem;
     
     background: #fff;
     div {
@@ -88,5 +89,8 @@ export default Vue.extend({
     
     }
   }
+  .context-list:nth-child(1){
+      margin-top:0;
+    }
 }
 </style>

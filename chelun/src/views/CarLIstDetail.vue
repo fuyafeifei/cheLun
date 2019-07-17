@@ -52,9 +52,12 @@ export default Vue.extend({
     ...mapActions({
       getcarListDetail: "TypeList/getcarListDetail"
     }),
+    ...mapMutations({
+      upDateilData:"TypeList/upDateilData"
+    }),
     carNav(e: any, index: number) {
       this.i=index
-      console.log(e.target.innerHTML, index);
+      this.upDateilData(e.target.innerHTML)
     }
   },
   created() {
@@ -71,10 +74,8 @@ export default Vue.extend({
   display: flex;
   flex-direction: column;
   background: $page-background-color;
-
   .img {
     height: 2.2rem;
-    background: pink;
     img {
       width: 100%;
       height: 100%;
