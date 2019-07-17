@@ -26,11 +26,11 @@ export default {
   },
   computed: {},
   methods: {
-    touchstart(e: Event):any {
+    touchstart(e: Event): void {
       this.isTouch = true;
     //   this.sec.scrollToElement(this.arrList[], 200);
     },
-    touchmove(e:any):any {
+    touchmove(e: Event): void {
       let dataLength = this.$refs.spelling.children.length;
       let pageY = e.touches[0].pageY;
       let letterHeight = 0.4 * window.innerWidth / 750 * 100;
@@ -54,7 +54,7 @@ export default {
     }
   },
   created() {
-    this.$bus.$on("abscroll", (res:any) => {
+    this.$bus.$on("abscroll", res => {
       this.arrList = res.arrList.children;
       this.sec = res.sec;
     });

@@ -1,13 +1,18 @@
 <template>
   <div>
-         我是左边组件
+       
          <left-nav :getlistact="getlistact"></left-nav>
+        
+         <right-nav :getlistact="getlistact"></right-nav>
+        
+      
   </div>
 </template>
 
 <script>
 
  import leftNav from '@/components/leftNav.vue'
+ import rightNav from '@/components/rightNav.vue'
  import { mapActions, mapState } from 'vuex'
  import Vue from 'vue'
 export default  {
@@ -15,7 +20,8 @@ export default  {
 
   },
   components:{
-     leftNav
+     leftNav,
+     rightNav
   },
   data(){
     return {
