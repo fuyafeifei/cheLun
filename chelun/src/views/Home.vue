@@ -1,31 +1,44 @@
 <template>
   <div class="home">
-    <button @click="getfn">动画</button>
-    <TypeList :flag="flag"></TypeList>
+    <TypeList></TypeList>
+    <left-nav :getlistact="getlistact"></left-nav>
+    <right-nav :getlistact="getlistact"></right-nav>
   </div>
 </template>
 <script lang="ts">
+import leftNav from "@/components/leftNav.vue";
+import rightNav from "@/components/rightNav.vue";
+import { mapActions, mapState } from "vuex";
 import Vue from "vue";
-import TypeList from '../components/TypeList.vue';
+import TypeList from "../components/TypeList.vue";
 export default Vue.extend({
   name: "home",
   props: {},
   components: {
-    TypeList
+    TypeList,
+    leftNav,
+    rightNav
   },
   data() {
     return {
-      flag:false,
+      flag: false
     };
   },
-  computed: {},
+  computed: {
+    ...mapState({
+      getlistact: (state:any) => state.left.getlistact
+    })
+  },
   methods: {
-    getfn() {
-      this.flag = true;
-    }
+    ...mapActions({
+      getleft: "left/getleftli",
+      getCarList:"TypeList/getCarList"
+    })
   },
   created() {},
-  mounted() {}
+  mounted() {
+    this.getleft();
+  }
 });
 </script>
 <style scoped lang="scss">
@@ -33,11 +46,9 @@ export default Vue.extend({
   width: 100%;
   height: 100%;
   position: relative;
-  button{
+  button {
     width: 50px;
     height: 50px;
   }
 }
 </style>
-
-

@@ -1,5 +1,6 @@
 import { carList,carListDetail } from '../../servise/index';
 const state: any = {
+    flag: false,//有侧栏是否显示
     CarData: [],//汽车品牌列表
     carListDetailData:[],//汽车品牌详情列表
     carSetData:[],//汽车品牌详情列表排序
@@ -19,7 +20,7 @@ const mutations: any = {
              state.yearList.push(item.market_attribute.year)
         })
         state.yearList=Array.from(new Set(state.yearList))
-        console.log(state.datailList)
+      
     },
     //根据时间切换数据
     upDateilData(){
@@ -28,8 +29,12 @@ const mutations: any = {
     
 }
 const actions: any = {
-    async getCarList({ commit }: any,payload:number) {
-        payload=9
+    async getCarList({ commit,state }: any,payload:number) {
+        if(payload){
+            state.flag=true
+        }else{
+            state.flag=false
+        }
         const data = await carList(payload);
         commit("setCarList", data.data)
     },

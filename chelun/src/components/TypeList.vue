@@ -17,14 +17,15 @@
 <script>
 import {mapActions,mapState} from 'vuex';
 export default {
-  props: ["flag"],
+  props:{},
   components: {},
   data() {
     return {};
   },
   computed: {
       ...mapState({
-          CarData:state=>state.TypeList.CarData
+          CarData:state=>state.TypeList.CarData,
+          flag:state=>state.TypeList.flag
       })
   },
   methods: {
@@ -45,18 +46,18 @@ export default {
 </script>
 <style scoped lang="scss">
 .car-list {
-  width: 75%;
+  width: 78%;
   height: 100%;
   position: absolute;
   right: 0;
   top: 0;
-  background: pink;
+   background: #fff;
   transition: right 1s;
   overflow-y: auto;
+  z-index: 1000;
 }
 .Type-list{
     width: 100%;
-    
     background: #FFF;
     display: flex;
     flex-direction: column;
@@ -65,12 +66,14 @@ export default {
         background:#f2f2f2;;
         line-height: 0.3rem;
         padding-left: .15rem;
+        margin: 0 0.03rem;
     }
     ul{
         width: 100%;
         flex: 1;
+        padding: 0 0.1rem;
         li{
-            height: 0.7rem;
+            height: 0.8rem;
             border-bottom: 1px solid #ddd;
             display: flex;
             padding: .03rem;
@@ -82,9 +85,10 @@ export default {
                 width: 63%;
                 p{
                     margin-top: .05rem;
+                    
                 }
                 p:first-child{
-                    font-size: 0.18rem;
+                    font-size: 0.16rem;
                     color:#5f687a;
                 }
                 p:nth-child(2){
