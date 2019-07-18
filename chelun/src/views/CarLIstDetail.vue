@@ -10,7 +10,7 @@
         <p>指导价 {{carListDetailData.market_attribute.official_refer_price}}</p>
       </div>
       <div class="info-btn">
-        <button>询问底价</button>
+        <button @click="dijiabtn">询问底价</button>
       </div>
     </div>
     <div class="car-list">
@@ -68,6 +68,11 @@ export default Vue.extend({
     },
     imgFn(SerialID:any){
       this.$router.push({path:'/img',query:{SerialID:SerialID}})
+      // this.i=index
+      // console.log(e.target.innerHTML, index);
+    },
+    dijiabtn():any{
+      this.$router.push({path:"/floorprice",query:{carId:"126037",cityId:"201"}})
     }
   },
   created() {

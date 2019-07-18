@@ -3,6 +3,7 @@
     <div id="nav">
       <!-- <router-link to="/">首页</router-link>     -->
       <router-link to="/"></router-link>
+      <router-link to="/floorprice"></router-link>
     </div>
     <router-view/>
   </div>

@@ -11,6 +11,7 @@ import rightNav from "@/components/rightNav.vue";
 import { mapActions, mapState } from "vuex";
 import Vue from "vue";
 import TypeList from "../components/TypeList.vue";
+
 export default Vue.extend({
   name: "home",
   props: {},

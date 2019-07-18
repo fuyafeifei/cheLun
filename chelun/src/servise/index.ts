@@ -8,12 +8,17 @@ export let carList = (params: number): Promise<any> => {
 export let carListDetail = (params: number): Promise<any> => {
     return request.get("v2-car-getInfoAndListById.html?SerialID=" + params)
 }
+ // 首页渲染
 export function getleft() {
     return request.get('/v2-car-getMasterBrandList.html?_1563182342439')
 }
 export function getImg(params:number) {
     return request.get("/v2-car-getImageList.html?SerialID=" + params)
 }
+export function carPrice(params:any){   
+     return request.get('/v2-dealer-alllist.html?carId='+ params.carId+'&'+'cityId='+params.cityId)
+}
 
+// http://baojia.chelun.com/v2-dealer-alllist.html?carId=126037&cityId=201&_1563418320239
  // http://baojia.chelun.com/v2-car-getMasterBrandList.html?_1563182342439
 //
