@@ -17,6 +17,16 @@ export default new Router({
       path: '/carDetail',
       name: 'carDetail',
       component: () => import('@/views/CarLIstDetail.vue')
+    },
+    {
+      path: '/img',
+      name: 'CarImg',
+      component: () => import('../views/CarImg.vue')
+    },
+    {
+      path: '/color',
+      name: 'CarColor',
+      component: () => import('../views/CarColor.vue')
     }
   ]
 })

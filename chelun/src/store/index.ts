@@ -3,6 +3,8 @@ import Vuex from 'vuex'
 import left from './modules/left'
 Vue.use(Vuex)
 import TypeList from './modules/TypeList';
+import CarImg from './modules/CarImg';
+
 export default new Vuex.Store({
   state: {
 
@@ -16,5 +18,6 @@ export default new Vuex.Store({
   modules: {
     TypeList,
     left,
+    CarImg
   },
 })

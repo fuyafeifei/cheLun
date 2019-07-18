@@ -1,5 +1,5 @@
 import { carList, carListDetail } from '../../servise/index';
-import { format,DataSort } from '@/utils/index';
+import { format, DataSort } from '@/utils/index';
 const state: any = {
     flag: false,//有侧栏是否显示
     CarData: [],//汽车品牌列表
@@ -19,12 +19,7 @@ const mutations: any = {
         state.carListDetailData = payload
         state.datailList = format(payload.list.sort(DataSort("exhaust")))
         state.datailListAll = payload.list
-       
-        console.log("....",state.datailList)
-        // for(let i in state.datailList){
-        //     console.log(i)
-        // }
-        // format(payload.list)
+
         //遍历出时间数据 并处理
         state.carListDetailData.list.forEach((item: any): any => {
             state.yearList.push(item.market_attribute.year)
@@ -35,14 +30,14 @@ const mutations: any = {
     },
     //根据时间切换数据
     upDateilData(state: any, payload: any) {
-        
+
         if (payload == "全部") {
             state.datailList = format(state.datailListAll.sort(DataSort("exhaust")));
-            console.log(".....",state.datailList)
+            console.log(".....", state.datailList)
             return false;
         }
-        state.datailList =format(state.datailListAll.filter((item: any) => item.market_attribute.year == payload).sort(DataSort("exhaust"))) 
-        console.log(".....",state.datailList)
+        state.datailList = format(state.datailListAll.filter((item: any) => item.market_attribute.year == payload).sort(DataSort("exhaust")))
+        console.log(".....", state.datailList)
     }
 
 }

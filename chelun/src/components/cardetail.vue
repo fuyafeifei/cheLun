@@ -29,7 +29,6 @@ export default Vue.extend({
       ...mapState({
         datailList:(state:any)=>state.TypeList.datailList
       })
-      
   },
   methods: {},
   created() {
@@ -44,6 +43,7 @@ export default Vue.extend({
 <style scoped lang="scss">
 @import "@/scss/global.scss";
 .context {
+  // margin-bottom: 0.5rem;
   > p {
     font-size: 0.15rem;
     height: 0.3rem;
@@ -54,7 +54,7 @@ export default Vue.extend({
   }
   .context-list {
     padding: 0.1rem 0.1rem 0;
-    margin-top: 0.1rem;
+     margin-top: 0.1rem;
     
     background: #fff;
     div {
@@ -90,7 +90,7 @@ export default Vue.extend({
     }
   }
   .context-list:nth-child(1){
-      margin-top:0;
+      margin:0;
     }
 }
 </style>

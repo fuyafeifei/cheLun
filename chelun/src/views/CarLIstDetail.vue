@@ -1,7 +1,8 @@
 <template>
   <div class="wrap">
-    <div class="img">
+    <div class="img" @click="imgFn(carListDetailData.SerialID)">
       <img :src="carListDetailData.CoverPhoto" alt />
+      <span>{{carListDetailData.pic_group_count}}张照片</span>
     </div>
     <div class="info">
       <div class="info-cont" v-if="carListDetailData.market_attribute">
@@ -14,11 +15,17 @@
     </div>
     <div class="car-list">
       <div class="car-nav">
-        <span v-for="(item,index) in yearList" :key="index" @click="(e)=>carNav(e,index)"
+        <span
+          v-for="(item,index) in yearList"
+          :key="index"
+          @click="(e)=>carNav(e,index)"
           :class="{'active':i===index}"
-          >{{item}}</span>
+        >{{item}}</span>
       </div>
-      <cardetail></cardetail>
+      <div class="list-count">
+        <cardetail></cardetail>
+      </div>
+      
     </div>
     <div class="flex-column">
       <p>询问底价</p>
@@ -53,11 +60,14 @@ export default Vue.extend({
       getcarListDetail: "TypeList/getcarListDetail"
     }),
     ...mapMutations({
-      upDateilData:"TypeList/upDateilData"
+      upDateilData: "TypeList/upDateilData"
     }),
     carNav(e: any, index: number) {
-      this.i=index
-      this.upDateilData(e.target.innerHTML)
+      this.i = index;
+      this.upDateilData(e.target.innerHTML);
+    },
+    imgFn(SerialID:any){
+      this.$router.push({path:'/img',query:{SerialID:SerialID}})
     }
   },
   created() {
@@ -74,11 +84,23 @@ export default Vue.extend({
   display: flex;
   flex-direction: column;
   background: $page-background-color;
+  overflow-y: auto;
   .img {
     height: 2.2rem;
+    position: relative;
     img {
       width: 100%;
       height: 100%;
+    }
+    span {
+      position: absolute;
+      bottom: 0.15rem;
+      right: 0.2rem;
+      color: #fff;
+      padding: 1px 0.1rem;
+      border-radius: 0.2rem;
+      background: rgba(0, 0, 0, 0.6);
+      font-size: 0.13rem;
     }
   }
   .info {
@@ -114,7 +136,7 @@ export default Vue.extend({
   .car-list {
     flex: 1;
     margin-top: 0.1rem;
-    overflow-y: auto;
+    
     .car-nav {
       height: 0.4rem;
       background: #fff;
@@ -127,6 +149,9 @@ export default Vue.extend({
           color: $button-background-color;
         }
       }
+    }
+    .list-count{
+      margin-bottom: 0.5rem;
     }
   }
   .flex-column {

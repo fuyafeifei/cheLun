@@ -11,6 +11,9 @@ export let carListDetail = (params: number): Promise<any> => {
 export function getleft() {
     return request.get('/v2-car-getMasterBrandList.html?_1563182342439')
 }
-
+export function getImg(params:number) {
+    return request.get("/v2-car-getImageList.html?SerialID=" + params)
+}
 
  // http://baojia.chelun.com/v2-car-getMasterBrandList.html?_1563182342439
+//
