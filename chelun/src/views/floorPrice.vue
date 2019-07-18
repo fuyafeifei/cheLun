@@ -3,11 +3,14 @@
     <div class="wrap">
         <p class="font">可向多个商家咨询最低价，商家及时回复@</p>
          <dl>
-             <dt><img src="" alt=""></dt>
-             <dd>
-                  <p>mimin</p>
+             <dt v-if="getcar.details"><img v-lazy="getcar.details.serial.Picture" alt="" /></dt>
+             <dd v-if="getcar.details">
+                  <p>{{getcar.details.serial.AliasName}}</p>
                   <p> > </p>
-                  <p>2017款 引力版</p>
+                  <p>
+                    <span>{{getcar.details.market_attribute.year}}款</span>
+                    <span>{{getcar.details.car_name}}</span>
+                    </p>
              </dd>
          </dl>
          <p class="geren">个人信息</p>
@@ -32,7 +35,7 @@
          <div class="but">
               <button class="buttona">询问底价</button>
          </div>
-         <make-offers></make-offers>  
+         <make-offers :carlist="getcar.list"></make-offers>  
     </div>
           <city></city>
     </div>
@@ -40,6 +43,8 @@
 <script lang="ts">
  import makeOffers from '@/components/makeOffers.vue'
  import city from '@/components/city.vue'
+ import { mapActions, mapState } from "vuex"
+
 export default {
   props: {},
   components: {
@@ -49,14 +54,25 @@ export default {
   data() {
     return {};
   },
-  computed: {},
-  methods: {
-    citybtn(){
-        
-    }
+  computed: {
+     ...mapState({
+        getcar:(state:any) => state.carPrice.getcar
+     })
   },
-  created() {},
-  mounted() {}
+  methods: {
+    citybtn(){   
+    },
+   ...mapActions({
+         getcarPrice:"carPrice/getcarPrice"
+    })
+  },
+  created() {
+ 
+  },
+  mounted() {
+      this.getcarPrice(this.$route.query) 
+      // console.log("...00",this.$route.query)
+  }
 };
 </script>
 <style scoped lang="scss">
@@ -75,7 +91,7 @@ export default {
   dl {
     width: 100%;
     height: 90px;
-    background: red;
+    background: #fff;
     display: flex;
     dt {
       width: 35%;
@@ -98,6 +114,11 @@ export default {
       p:nth-child(2) {
         display: flex;
         justify-content: flex-end;
+      }
+      p:nth-child(3){
+        span:nth-child(2){
+          padding-left:15px;
+        }
       }
     }
   }

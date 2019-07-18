@@ -1,24 +1,23 @@
 <template>
     <div>
           <p class="pc">选择报价经销商</p>
-           <div class="baojia">
+           <div v-for="(item,index) in carlist" :key="index" class="baojia">
                 <div class="show"><i></i></div>
                 <div class="baojiayi">
-                    <p>北京系能源汽车</p>
-                    <p>北京市啊实打实大师啊实打</p>
+                    <p>{{item.dealerShortName}}</p>
+                    <p>{{item.address}}</p>
                 </div>
                 <div class="baojiaer">
-                    <p>13.58万</p>
-                    <p>售全国</p>
+                    <p>{{item.vendorPrice}}万</p>
+                    <p>售{{item.saleRange}}</p>
+                    
                 </div>
            </div>
     </div>
 </template>
 <script>
 export default {
-    props:{
-
-    },
+    props:['carlist'],
     components:{
 
     },
@@ -79,6 +78,7 @@ export default {
              p:nth-child(2){
                  font-size: 13px;
                  padding:5px 0;
+                  color:rgb(161, 161, 161);
              }
              p:nth-child(1){
                  font-size: 15px;
@@ -90,11 +90,13 @@ export default {
              p:nth-child(2){
                  font-size: 13px;
                  padding:5px 0;
+                
                  
              }
              p:nth-child(1){
                  font-size:15px;
                  color:red;
+                 
              }
          }
      }

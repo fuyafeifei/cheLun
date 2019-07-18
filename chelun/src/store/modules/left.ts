@@ -1,18 +1,18 @@
 
 import { getleft } from '../../servise/index';
 // console.info(getleft)
-const state = {
+const state:any = {
     getlistact:[] = []
 }
 
-const actions = {
+const actions:any = {
     async getleftli({ commit }: any) {
         let data = await getleft()
         commit('getlefts', data.data)
     }
 }
 
-const mutations = {
+const mutations:any = {
     getlefts(statea: any, payload: any) {
         let arr:any = [];
         //过滤数据  获取字母

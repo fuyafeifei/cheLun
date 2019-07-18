@@ -15,6 +15,7 @@ const mutations: any = {
     setCarListDetail(state:any,payload:any){
         state.carListDetailData = payload
         state.datailList=payload.list
+        console.log("zon",state.carListDetailData)
         //遍历出时间数据 并处理
         state.carListDetailData.list.forEach((item:any):any=>{
              state.yearList.push(item.market_attribute.year)

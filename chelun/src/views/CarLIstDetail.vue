@@ -57,7 +57,8 @@ export default Vue.extend({
       console.log(e.target.innerHTML, index);
     },
     dijiabtn(){
-        this.$router.push({path:'/floorPrice'})
+      
+        this.$router.push({path:'/floorPrice',query:{carId:126037,cityId:201}})
         console.log(111)
     }
   },
