@@ -1,7 +1,7 @@
 <template>
   <div class="wrap">
     <div class="navType">
-      <p>颜色</p>
+      <p @click="SeleColor">颜色</p>
       <p>车款</p>
     </div>
     <div class="imgList">
@@ -35,7 +35,10 @@ export default Vue.extend({
   methods: {
     ...mapActions({
       getImgData: "CarImg/getImgData"
-    })
+    }),
+    SeleColor(){
+      this.$router.push({path:'/color',query:{SerialID:this.$route.query.SerialID}})
+    }
   },
   created() {
     this.getImgData(this.$route.query.SerialID);

@@ -4,13 +4,10 @@ export function format(arr:any) {
     arr.forEach((item:any) => {
         if(!newArr[item.exhaust_str+"/"+item.max_power_str+item.inhale_type]){
             newArr[item.exhaust_str+"/"+item.max_power_str+item.inhale_type]=[]
-            
         }
         newArr[item.exhaust_str+"/"+item.max_power_str+item.inhale_type].push(item)
-        
     })
     return newArr
-   
 }
 //排序
 export function DataSort(property: any) {

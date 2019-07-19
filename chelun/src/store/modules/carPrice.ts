@@ -17,7 +17,7 @@ const actions:any={
 
 const mutations:any={
     getcarPrices(state:any,payload:any){
-        console.log('...aa',payload)
+        // console.log('...aa',payload)
            state.getcar = payload;
     }
 }

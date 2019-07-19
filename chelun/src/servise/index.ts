@@ -18,7 +18,9 @@ export function getImg(params:number) {
 export function carPrice(params:any){   
      return request.get('/v2-dealer-alllist.html?carId='+ params.carId+'&'+'cityId='+params.cityId)
 }
-
+export function getColor(params:any){   
+    return request.get('/v2-car-getModelImageYearColor.html?SerialID='+params)
+}
 // http://baojia.chelun.com/v2-dealer-alllist.html?carId=126037&cityId=201&_1563418320239
  // http://baojia.chelun.com/v2-car-getMasterBrandList.html?_1563182342439
 //
